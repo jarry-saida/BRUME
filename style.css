@@ -135,8 +135,11 @@ form{
     align-items: flex-start;
     justify-content: center;
     gap: 5px;
+    background-color: #FFFFFF;
     padding: 8px 10px;
     border: 1px solid #DFD5C8;
     border-radius:12px;
-    background-color: aqua;
+}
+.option input {
+    display: none;
 }
