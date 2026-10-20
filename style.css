@@ -49,3 +49,97 @@ footer{
     gap: 12px;
     padding: 24px 64px;
 }
+footer p{
+    color: #796A59;
+}
+#section2 p{
+    color: #796A59;
+}
+button{
+    background-color: #394B32;
+    border: #394B32;
+    border-radius: 12px;
+    padding: 16px 32px;
+    color: #FFFFFF;
+}
+#section2{
+    display: flex;
+    justify-content: space-between;
+    padding: 32px 64px;
+    gap: 32px;
+}
+#section2>div{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+#section1{
+    display: flex;
+    gap: 64px;
+    background-color: #FAF7F0;    
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+#div1{
+    display: flex;
+    gap: 16px;
+    color: #796A59;
+}
+#div2{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+#div2>:first-child{
+    color: #394B32;
+}
+#div3,
+#div4,
+#div5,
+#div6 {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+#div7{
+    color: #796A59;
+}
+.option-name {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+}
+.option-price {
+    color:#796A59;
+    font-size: 12px;
+}
+.tete-option{
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+}
+.option{
+    display: flex;
+    gap: 12px;
+}
+.option label {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 5px;
+    background-color: #FFFFFF;
+    padding: 8px 10px;
+    border: 1px solid #DFD5C8;
+    border-radius:12px;
+}
+.option input {
+    display: none;
+}
