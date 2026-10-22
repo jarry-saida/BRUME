@@ -37,10 +37,11 @@ for (const ckey in config) {
         }
     }
 }
-
+let totalPrix = 0;
+let reserve = [];
 function CalculetotalPrix() {
-    let totalPrix = 0;
-    let reserve = [];
+    totalPrix = 0;
+    reserve = [];
     const optionChoix = document.querySelectorAll(".option input:checked");
     optionChoix.forEach(function(opt) {
         let prix;
@@ -64,5 +65,3 @@ document.querySelectorAll(".option input").forEach(function(input) {
 
 
 
-
- 
