@@ -37,11 +37,11 @@ for (const ckey in config) {
         }
     }
 }
-let totalPrix = 0;
-let reserve = [];
+let totalPrix;
+let description = [];
 function CalculetotalPrix() {
     totalPrix = 0;
-    reserve = [];
+    description = [];
     const optionChoix = document.querySelectorAll(".option input:checked");
     optionChoix.forEach(function(opt) {
         let prix;
@@ -51,17 +51,57 @@ function CalculetotalPrix() {
             prix = config[opt.name][opt.value.toLowerCase()].price;
         }
         totalPrix += prix;
-        reserve.push({
+        description.push({
+            categorie:opt.name,
             name: opt.value,
-            PrixReserve: prix
+            PrixChoix: prix
         });
     });
-    document.getElementById("total-prix").textContent =`${totalPrix.toFixed(2).replace(".", ",")} DH`;
-    console.log(reserve);
+        // console.log(categorie)
+
+    // console.log(totalPrix)
+    document.getElementById("total-prix").textContent = `${totalPrix.toFixed(2).replace(".", ",")} DH`;
 }
 document.querySelectorAll(".option input").forEach(function(input) {
     input.addEventListener("change", CalculetotalPrix);
 });
 
 
+
+
+
+const ajouterPanier = document.getElementById("ajouter-panier");
+
+
+const Page1 = document.getElementById("page1");
+const Page2 = document.getElementById("page2");
+
+
+
+ajouterPanier.addEventListener("click",affichage);
+function affichage(){
+    Page1.style.display="none";
+    Page2.style.display="block";
+    remplir();
+}
+const Info = document.getElementById("info");
+
+const lastTotal =document.getElementById("last-total");
+
+
+function remplir() {
+
+description.forEach(function(opt){
+            console.log(opt.categorie);
+
+        Info.innerHTML+=`
+                    <div class="facture">
+                        <p>${opt.categorie} . ${opt.name}</p>
+                        <p>${opt.PrixChoix} DH</p>
+                    </div>
+    `
+});
+    lastTotal.textContent= `${totalPrix.toFixed(2).replace(".", ",")} DH`;
+
+}
 
