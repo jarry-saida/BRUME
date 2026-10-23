@@ -37,8 +37,11 @@ for (const ckey in config) {
         }
     }
 }
+let nb=0;
 let totalPrix;
 let description = [];
+const panier = document.getElementById("nmb");
+
 function CalculetotalPrix() {
     totalPrix = 0;
     description = [];
@@ -61,7 +64,11 @@ function CalculetotalPrix() {
 
     // console.log(totalPrix)
     document.getElementById("total-prix").textContent = `${totalPrix.toFixed(2).replace(".", ",")} DH`;
+    nb =1;
+    panier.textContent = `${nb}`;
+
 }
+ panier.textContent = `${nb}`;
 document.querySelectorAll(".option input").forEach(function(input) {
     input.addEventListener("change", CalculetotalPrix);
 });
@@ -80,6 +87,7 @@ const Page2 = document.getElementById("page2");
 
 ajouterPanier.addEventListener("click",affichage);
 function affichage(){
+    CalculetotalPrix();
     Page1.style.display="none";
     Page2.style.display="block";
     remplir();
@@ -90,10 +98,8 @@ const lastTotal =document.getElementById("last-total");
 
 
 function remplir() {
-
+Info.innerHTML = "";
 description.forEach(function(opt){
-            console.log(opt.categorie);
-
         Info.innerHTML+=`
                     <div class="facture">
                         <p>${opt.categorie} . ${opt.name}</p>
@@ -104,16 +110,39 @@ description.forEach(function(opt){
     lastTotal.textContent= `${totalPrix.toFixed(2).replace(".", ",")} DH`;
 }
 
-const  retour = document.querySelectorAll('vers1');
-const  retour2 = document.querySelectorAll('vers2');
-retour.addEventListener("onclick",retour1);
-retour2.addEventListener("onclick",)
-function retour1(){
+const  retour = document.querySelectorAll('.vers1');
+const  retour2 = document.querySelectorAll('.vers2');
+retour.forEach(function(lien) {
+    lien.addEventListener("click", function (){
     Page1.style.display="block";
     Page2.style.display="none";
-}
-function retour2(){
+});
+});
+retour2.forEach(function(lien) {
+    lien.addEventListener("click", function (){
     Page1.style.display="none";
     Page2.style.display="block";
-}
+});
+});
+const veRs02 = document.getElementsByClassName('vers02');
+
+veRs02[0].addEventListener("click", function() {
+    Page1.style.display = "none";
+    Page2.style.display = "block";
+});
+
+const veRs01 = document.getElementsByClassName('vers01');
+
+veRs01[0].addEventListener("click", function() {
+    Page1.style.display = "block";
+    Page2.style.display = "none";
+});
+
+
+const lesChoix = document.getElementById("leschoix");
+lesChoix.textContent=`${opt.name} . `
+
+
+
+
 
