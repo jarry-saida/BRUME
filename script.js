@@ -102,6 +102,18 @@ description.forEach(function(opt){
     `
 });
     lastTotal.textContent= `${totalPrix.toFixed(2).replace(".", ",")} DH`;
+}
 
+const  retour = document.querySelectorAll('vers1');
+const  retour2 = document.querySelectorAll('vers2');
+retour.addEventListener("onclick",retour1);
+retour2.addEventListener("onclick",)
+function retour1(){
+    Page1.style.display="block";
+    Page2.style.display="none";
+}
+function retour2(){
+    Page1.style.display="none";
+    Page2.style.display="block";
 }
 
