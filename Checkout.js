@@ -85,6 +85,7 @@ const S_Prix = document.querySelectorAll(`.price`);
 function SousPrix() {
 
     coffeeCart.forEach((opt) => {
+        
         let Price = opt.price;
         let Quantity = opt.quantity;
         // console.log(Price);
