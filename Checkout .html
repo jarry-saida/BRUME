@@ -40,45 +40,48 @@
             <article>
                 <img src="cappuccino.png" alt="Cappuccino Mousseux">
                 <div>
-                    <span class="name">Cappuccino Mousseux</span>
-                    <span class="price">4,00 DH</span>
+                    <span class="name"></span>
+                    <small class="sousprix">Sous Prix :</small>
+                    <span class="price"></span>
                 </div>
                 <div>
-                    <button class="add">+</button>
-                    <span class="quantity">2</span>
-                    <button class="minus">-</button>
+                    <button data-x="id" class="add">+</button>
+                    <span id="id" class="quantity"></span>
+                    <button data-y="id" class="minus">-</button>
                 </div>
+
             </article>
             <article>
                 <img src="latte.png" alt="Latte Caramel">
                 <div>
-                    <span class="name">Latte Caramel</span>
-                    <span class="price">4,50 DH</span>
+                    <span class="name"></span>
+                    <small class="sousprix">Sous Prix :</small>
+                    <span class="price"></span>
                 </div>
                 <div>
-                    <button class="add">+</button>
-                    <span class="quantity">1</span>
-                    <button class="minus">-</button>
+                    <button data-x="id1" class="add">+</button>
+                    <span id="id1" class="quantity"></span>
+                    <button data-y="id1" class="minus">-</button>
                 </div>
+
             </article>
             <article>
                 <img src="mug.png" alt="Mug Isotherme Noir">
                 <div>                
-                    <span class="name">Mug Isotherme Noir</span>
-                    <span class="price">15,00 DH</span>
+                    <span class="name"></span>
+                    <small class="sousprix">Sous Prix :</small>
+                    <span class="price"></span>
                 </div>
                 <div>
-                    <button class="add">+</button>
-                    <span class="quantity">1</span>
-                    <button class="minus">-</button>
+                    <button data-x="id2" class="add">+</button>
+                    <span id="id2" class="quantity"></span>
+                    <button data-y="id2" class="minus">-</button>
                 </div>
+
             </article>
 
             <div class="resume-prix">
-                <div>
-                    <span>Sous-total</span>
-                    <span>27,50 DH</span>
-                </div>
+
 
                 <div>
                     <span>Livraison</span>
@@ -87,13 +90,13 @@
 
                 <div class="total">
                     <span>Total</span>
-                    <span>27,50 DH</span>
+                    <span>35,50 DH</span>
                 </div>
 
             </div>
 
             <div>
-                <button type="button">+ Ajouter un autre produit</button>
+                <button type="button" id="ajouter">+ Ajouter un autre produit</button>
             </div>
 
         </section>
@@ -110,6 +113,7 @@
                                 type="text"
                                 name="firstName"
                                 id="first-name"
+                                placeholder="Votre prénom"
                                 required
                             >
                         </div>
@@ -120,6 +124,7 @@
                                 type="text"
                                 name="lastName"
                                 id="last-name"
+                                placeholder="Votre nom"
                                 required
                             >
                         </div>
@@ -130,6 +135,7 @@
                                 type="email"
                                 name="email"
                                 id="email"
+                                placeholder="exemple@domaine.com"
                                 required
                             >
                         </div>
@@ -140,11 +146,12 @@
                         <legend>Adresse de livraison</legend>
 
                         <div>
-                            <label for="address">Adresse complète</label>
+                            <label for="adresse">Adresse complète</label>
                             <input
                                 type="text"
-                                name="address"
-                                id="address"
+                                name="adresse"
+                                id="adresse"
+                                placeholder="Votre adresse"
                                 required
                             >
                         </div>
@@ -155,6 +162,7 @@
                                 type="text"
                                 name="city"
                                 id="city"
+                                placeholder="Votre ville"
                                 required
                             >
                         </div>
@@ -165,6 +173,8 @@
                                 type="text"
                                 name="postalCode"
                                 id="postal-code"
+                                placeholder="80000"
+                                maxlength="5"
                                 required
                             >
                         </div>
@@ -181,6 +191,7 @@
                                 name="cardNumber"
                                 id="card-number"
                                 maxlength="16"
+                                placeholder="1234 5678 9101 1121"
                                 required
                             >
                         </div>
@@ -203,6 +214,7 @@
                                 type="text"
                                 name="cvv"
                                 id="cvv"
+                                placeholder="123"
                                 maxlength="3"
                                 required
                             >
