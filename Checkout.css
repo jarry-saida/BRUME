@@ -242,7 +242,6 @@ form {
 
 
 #payment-title {
-    font-family: Georgia, serif;
     font-size: 22px;
     margin-bottom: 2px;
 }
@@ -484,6 +483,176 @@ footer p {
 
 
 
+
+
+
+#quickAddModal {
+    width: 90%;
+    max-width: 500px;
+    max-height: 500px; 
+    padding: 30px;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    background-color: var(--cream);
+    color: var(--dark);
+
+    box-shadow: 0 15px 40px rgba(48, 44, 36, 0.2);
+}
+
+#quickAddModal[open] {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#quickAddModal::backdrop {
+    background-color: rgba(48, 44, 36, 0.55);
+    backdrop-filter: blur(3px);
+}
+
+#quickAddModal h2 {
+    margin: 0;
+
+    font-size: 28px;
+    text-align: center;
+
+    color: var(--olive);
+}
+
+#searchProduit {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 15px;
+
+    border: 1px solid var(--border);
+    border-radius: 6px;
+
+    background-color: var(--white);
+    color: var(--dark);
+
+    font-size: 15px;
+
+}
+
+#searchProduit:focus {
+    border-color: var(--olive);
+    box-shadow: 0 0 0 3px var(--olive-light);
+}
+
+#searchProduit::placeholder {
+    color: var(--brown);
+}
+
+#Produits {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    width: 100%;
+}
+
+#retourModal ,#ajouterP {
+    align-self: flex-start;
+    padding: 10px 22px;
+
+    border: 1px solid var(--olive);
+    border-radius: 6px;
+
+    background-color: transparent;
+    color: var(--olive);
+
+    font-size: 15px;
+
+}
+
+#retourModal:hover {
+    background-color: var(--olive);
+    color: var(--white);
+}
+
+@media (max-width: 480px) {
+    #quickAddModal {
+        width: 85%;
+        padding: 20px;
+    }
+
+    #quickAddModal h2 {
+        font-size: 23px;
+    }
+
+    #retourModal {
+        width: 100%;
+    }
+}
+
+
+
+
+
+
+.divcoffeProduct {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+
+    background-color: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    color: var(--dark);
+    text-align: center;
+
+}
+
+.divcoffeProduct:hover {
+    box-shadow: 0 8px 20px rgba(48, 44, 36, 0.1);
+}
+
+.divcoffeProduct img {
+    width: 100%;
+    max-width: 180px;
+    height: 140px;
+
+    border-radius: 8px;
+    background-color: var(--cream);
+}
+
+.divcoffeProduct .name {
+    font-size: 18px;
+
+    color: var(--olive);
+}
+
+.divcoffeProduct .price {
+    font-size: 16px;
+    color: var(--brown);
+}
+
+.divcoffeProduct #ajouterP {
+    width: 100%;
+    padding: 10px 16px;
+
+    border: 1px solid var(--olive);
+    border-radius: 6px;
+
+    background-color: var(--olive);
+    color: var(--white);
+
+    font-size: 15px;
+
+}
+
+.divcoffeProduct #ajouterP:hover {
+    background-color: var(--olive-light);
+    color: var(--olive);
+}
 
 
 

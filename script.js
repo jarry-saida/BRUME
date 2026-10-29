@@ -192,6 +192,10 @@ function afficherLesChoix() {
 
     lesChoix.textContent = lesChoix.textContent.replace(/ · $/, "");
 }
+const panier = document.getElementById("panier");
+panier.addEventListener("click", () => {
+    window.location.href = "http://127.0.0.1:5500/Checkout%20.html";
+});
 
 
 
