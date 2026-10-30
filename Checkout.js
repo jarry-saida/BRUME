@@ -194,7 +194,7 @@ const liste_pro = document.querySelectorAll(`.name`);
 
 recherche.addEventListener("input", Recherche);
 function Recherche() {
-    coffeeProducts.forEach((opt) => {
+    coffeeProducts.forEach(() => {
         let value = recherche.value.toLocaleLowerCase();
         // console.log(value);
         // if (liste_pro.name.toLowerCase().includes("value")){
@@ -258,6 +258,45 @@ function Recherche() {
     });
 
 }
+const AjouterP = document.querySelectorAll(`#ajouterP`);
+// console.log(AjouterP);
+for (let i = 0; i < AjouterP.length; i++) {
+    AjouterP[i].addEventListener("click", ajouterProduit);
+}
+
+function ajouterProduit(){
+    let name;
+    let nameChoix;
+    coffeeCart.forEach((opt)=>{
+        name = opt.name;
+        // console.log(name);
+        const choix = document.querySelectorAll(`.name`);
+        // console.log(choix);
+        for(let i = 0; i < choix.length ; i++){
+            nameChoix = choix[i].textContent;
+            // console.log(nameChoix);
+        }   
+        if(name == nameChoix){
+        console.log("yyy");
+    }
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+    dialog.close();
+}
+
+
 
 
 
