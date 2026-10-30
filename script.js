@@ -28,7 +28,7 @@ for (const ckey in config) {
     for (const key in config[ckey]){
         const names = document.querySelector(`.${ckey}-${key}-name`);
         const prices = document.querySelector(`.${ckey}-${key}-price`);
-        console.log(ckey)
+        // console.log(ckey);
         if(names){
             names.textContent=config[ckey][key].name;
         }
@@ -37,10 +37,8 @@ for (const ckey in config) {
         }
     }
 }
-let nb=0;
 let totalPrix;
 let description = [];
-const panier = document.getElementById("nmb");
 
 function CalculetotalPrix() {
     totalPrix = 0;
@@ -60,18 +58,21 @@ function CalculetotalPrix() {
             PrixChoix: prix
         });
     });
-        // console.log(categorie)
+    // console.log(categorie)
 
     // console.log(totalPrix)
     document.getElementById("total-prix").textContent = `${totalPrix.toFixed(2).replace(".", ",")} DH`;
-    nb =1;
-    panier.textContent = `${nb}`;
-
 }
- panier.textContent = `${nb}`;
 document.querySelectorAll(".option input").forEach(function(input) {
-    input.addEventListener("change", CalculetotalPrix);
+    input.addEventListener("change", function() {
+        CalculetotalPrix();
+        afficherLesChoix();
+    });
 });
+
+// document.querySelectorAll(".option input").forEach(function(input) {
+//     input.addEventListener("change", CalculetotalPrix);
+// });
 
 
 
@@ -85,16 +86,18 @@ const Page2 = document.getElementById("page2");
 
 
 
-ajouterPanier.addEventListener("click",affichage);
-function affichage(){
-    CalculetotalPrix();
-    Page1.style.display="none";
-    Page2.style.display="block";
-    remplir();
-}
+ajouterPanier.addEventListener("click",allerPage2);
+// function affichage(){
+//     CalculetotalPrix();
+//     Page1.style.display="none";
+//     Page2.style.display="block";
+//     remplir();
+// }
 const Info = document.getElementById("info");
 
 const lastTotal =document.getElementById("last-total");
+
+
 
 
 function remplir() {
@@ -102,12 +105,13 @@ Info.innerHTML = "";
 description.forEach(function(opt){
         Info.innerHTML+=`
                     <div class="facture">
-                        <p>${opt.categorie} . ${opt.name}</p>
+                        <p>${opt.categorie} . ${opt.name} </p>
                         <p>${opt.PrixChoix} DH</p>
                     </div>
     `
 });
     lastTotal.textContent= `${totalPrix.toFixed(2).replace(".", ",")} DH`;
+
 }
 
 const  retour = document.querySelectorAll('.vers1');
@@ -119,28 +123,80 @@ retour.forEach(function(lien) {
 });
 });
 retour2.forEach(function(lien) {
-    lien.addEventListener("click", function (){
-    Page1.style.display="none";
-    Page2.style.display="block";
+    lien.addEventListener("click", allerPage2);
 });
-});
-const veRs02 = document.getElementsByClassName('vers02');
+// const veRs02 = document.getElementsByClassName('vers02');
 
-veRs02[0].addEventListener("click", function() {
+// veRs02[0].addEventListener("click", function() {
+//     console.log("test2");
+//     Page1.style.display = "none";
+//     Page2.style.display = "block";
+// });
+
+// const veRs01 = document.getElementsByClassName('vers01');
+
+// veRs01[0].addEventListener("click", function() {
+//       console.log("test1");
+//     Page1.style.display = "block";
+//     Page2.style.display = "none";
+// });
+const BRUME = document.querySelector('.vers01');
+
+BRUME.addEventListener("click", function() {
+    if (Page1.style.display !== "none" && allerPage2()) {
+        Page1.style.display = "none";
+        Page2.style.display = "block";
+    } else {
+        Page1.style.display = "block";
+        Page2.style.display = "none";
+    }
+});
+
+
+function allerPage2() {
+    const baseChoisie = Page1.querySelector('input[name="base"]:checked');
+    const tailleChoisie = Page1.querySelector('input[name="taille"]:checked');
+    const laitChoisi = Page1.querySelector('input[name="lait"]:checked');
+
+    if (!baseChoisie || !tailleChoisie || !laitChoisi) {
+        alert("Veuillez choisir au moins une option !");
+        return;
+    }
+
+    CalculetotalPrix();
+    remplir();
+
     Page1.style.display = "none";
     Page2.style.display = "block";
-});
-
-const veRs01 = document.getElementsByClassName('vers01');
-
-veRs01[0].addEventListener("click", function() {
-    Page1.style.display = "block";
-    Page2.style.display = "none";
-});
-
+}
 
 const lesChoix = document.getElementById("leschoix");
-lesChoix.textContent=`${opt.name} . `
+function afficherLesChoix() {
+    const optionChoisie = document.querySelectorAll(".option input:checked");
+
+    lesChoix.textContent = "";
+
+    optionChoisie.forEach(function(opt) {
+        let choix;
+
+        if (opt.name === "supplement") {
+            choix = config.supplements[opt.value];
+        } else {
+            choix = config[opt.name][opt.value.toLowerCase()];
+        }
+
+        if (choix) {
+            lesChoix.textContent += choix.name + " · ";
+        }
+    });
+
+    lesChoix.textContent = lesChoix.textContent.replace(/ · $/, "");
+}
+const panier = document.getElementById("panier");
+panier.addEventListener("click", () => {
+    window.location.href = "http://127.0.0.1:5500/Checkout%20.html";
+});
+
 
 
 
