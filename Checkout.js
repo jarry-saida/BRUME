@@ -29,20 +29,24 @@ for (let i = 0; i < coffeeCart.length; i++) {
     if (names) {
         names[i].textContent = `${coffeeCart[i].name}`;
     }
-    if (prices) {
-        prices[i].textContent = `${coffeeCart[i].price.toFixed(2).replace(".", ",")} DH`;
-    }
+    // if (prices) {
+    //     prices[i].textContent = `${coffeeCart[i].price.toFixed(2).replace(".", ",")} DH`;
+    // }
     if (Quantity) {
         Quantity[i].textContent = `${coffeeCart[i].quantity}`;
     }
     // console.log(names);
     // console.log(prices);
     // console.log(Quantity);
+    SousPrix();
 }
 const Add = document.querySelectorAll('.add');
 const Minus = document.querySelectorAll('.minus');
 const Ajouter = document.getElementById("ajouter");
 const Quantity = document.querySelectorAll('.quantity');
+const S_Prix = document.querySelectorAll(`.price`);
+const buttonModal = document.getElementById("retourModal");
+const dialog = document.getElementById("quickAddModal");
 
 // let CNT;
 
@@ -54,6 +58,7 @@ function initiateBtnsEvents() {
 }
 // console.log(Add);
 // console.log(Minus);
+let Qnt;
 function plus(e) {
     let targetbutton = e.target;
     // console.log(targetbutton);
@@ -61,9 +66,10 @@ function plus(e) {
     // console.log(displayPruductQuantity);
     displayPruductQuantity.textContent++;
 
+    SousPrix();
 }
 
-console.log(Quantity);
+// console.log(Quantity);
 function moins(e) {
     let targetbutton = e.target;
     // console.log(targetbutton);
@@ -74,29 +80,64 @@ function moins(e) {
     } else {
         displayPruductQuantity.textContent--;
     }
+    //    console.log("Q" ,Qnt );
+
+    SousPrix();
+
     // console.log(displayPruductQuantity.textContent);
 }
 initiateBtnsEvents();
+// console.log(Qnt);
 
-const S_Prix = document.querySelectorAll(`.price`);
 // let prix;
 // console.log(S_Prix);
 
 function SousPrix() {
+    const Produits = document.querySelectorAll(".produit");
+    // console.log(Produits);
 
-    coffeeCart.forEach((opt) => {
-        
-        let Price = opt.price;
-        let Quantity = opt.quantity;
-        // console.log(Price);
-        // console.log(Quantity);
+    let total = 0;
+    Produits.forEach((produit, i) => {
+        const price = coffeeCart[i].price;
+        // console.log(price);
 
-        for (let i = 0; i < S_Prix.length; i++) {
+        const quantity = Number(produit.querySelector(".quantity").textContent);
+        // console.log(produit.querySelector(".quantity"));
+        // console.log(quantity);
+        // console.log(price * quantity);
 
-        }
+        const sous = price * quantity;
+        // console.log(sous);
+
+        produit.querySelector(".price").textContent = `${sous.toFixed(2).replace(".", ",")} DH`;
+        // console.log(produit.querySelector(".price"));
+
+        total += sous;
+
     });
 
+    document.getElementById("total").textContent = `${total.toFixed(2).replace(".", ",")} DH`;
 
+
+
+
+
+
+    // coffeeProducts.forEach((opt) => {
+
+    //     let Price = opt.price;
+
+    //     // console.log(Price);
+    //     // console.log(Quantity);
+    //     // console.log(Price * Quantity);
+
+    //     for (let i = 0; i < S_Prix.length; i++) {
+    //             let sous = S_Prix[i].textContent ;
+    //             sous = Price * Qnt ;
+    //             console.log(sous);
+    //             S_Prix[i].textContent = `${sous.toFixed(2).replace(".",",")} DH`;
+    //     }   
+    // });
 
     // for (const key in S_Prix) {
 
@@ -114,22 +155,20 @@ function SousPrix() {
     // console.log(prix);
 
 }
-SousPrix();
 
 
 
 
 
 
-const buttonModal = document.getElementById("retourModal");
-const dialog = document.getElementById("quickAddModal");
+
 buttonModal.addEventListener("click", () => {
     dialog.close();
 });
 Ajouter.addEventListener("click", () => {
     dialog.showModal();
 });
-function affichage() {
+function affichage(coffeeProducts) {
     const liste = document.getElementById("Produits");
     liste.innerHTML = "";
     coffeeProducts.forEach((opt) => {
@@ -146,9 +185,79 @@ function affichage() {
         `
     });
 }
-affichage();
+affichage(coffeeProducts);
+SousPrix();
+const recherche = document.querySelector(`input[name="search"]`);
+// console.log(recherche);
+const liste_pro = document.querySelectorAll(`.name`);
+// console.log(liste_pro);
+
+recherche.addEventListener("input", Recherche);
+function Recherche() {
+    coffeeProducts.forEach((opt) => {
+        let value = recherche.value.toLocaleLowerCase();
+        // console.log(value);
+        // if (liste_pro.name.toLowerCase().includes("value")){
+        //     affichage();
+        // }
+        // 
+        // let name = opt.name.toLocaleLowerCase();
+        // console.log(name);
+        const result = coffeeProducts.filter((opt) => {
 
 
+            // console.log(opt.name.toLocaleLowerCase().includes(value));
+            return opt.name.toLocaleLowerCase().includes(value);
+
+
+
+
+            // // console.log("iiiiiiiiii");
+            // liste_pro.innerHTML += `
+
+            //             <div class="divcoffeProduct">
+            //             <img src="${opt.image}">
+            //                 <span class="name">${opt.name}</span>
+            //                 <span class="price"> ${opt.price.toFixed(2).replace(".", ",")} DH</span>
+
+            //                 <button id="ajouterP">ajouter</button>
+            //             </div>
+            // `
+
+        });
+
+
+        affichage(result);
+        // console.log(result);
+
+
+
+
+
+
+
+
+        // if(name.includes(value)){
+
+        //     liste_pro.innerHTML = "";
+
+        //     console.log("iiiiiiiiii");
+        //     liste_pro.innerHTML += `
+
+        //                 <div class="divcoffeProduct">
+        //                 <img src="${opt.image}">
+        //                     <span class="name">${opt.name}</span>
+        //                     <span class="price"> ${opt.price.toFixed(2).replace(".", ",")} DH</span>
+
+        //                     <button id="ajouterP">ajouter</button>
+        //                 </div>
+        //     `
+        // }
+
+
+    });
+
+}
 
 
 

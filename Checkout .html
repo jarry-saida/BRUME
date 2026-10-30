@@ -39,7 +39,7 @@
         </div>
         <div>
             <section>
-                <article>
+                <article class="produit">
                     <img src="cappuccino.jpg" alt="Cappuccino Mousseux">
                     <div>
                         <span class="name"></span>
@@ -53,7 +53,7 @@
                     </div>
 
                 </article>
-                <article>
+                <article class="produit">
                     <img src="latte.jpg" alt="Latte Caramel">
                     <div>
                         <span class="name"></span>
@@ -67,7 +67,7 @@
                     </div>
 
                 </article>
-                <article>
+                <article class="produit">
                     <img src="mug.jpg" alt="Mug Isotherme Noir">
                     <div>
                         <span class="name"></span>
@@ -92,7 +92,7 @@
 
                     <div class="total">
                         <span>Total</span>
-                        <span>35,50 DH</span>
+                        <span id="total">35,50 DH</span>
                     </div>
 
                 </div>
@@ -178,7 +178,7 @@
         </div>
         <dialog id="quickAddModal">
             <h2>Ajouter un produit</h2>
-            <input type="search" id="searchProduit" placeholder="Rechercher un produit...">
+            <input type="search" id="searchProduit" name="search" placeholder="Rechercher un produit...">
             <button type="button" id="retourModal" class="retour">Retour</button>
             <div id="Produits"></div>
         </dialog>
