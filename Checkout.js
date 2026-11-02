@@ -179,8 +179,7 @@ function affichage(coffeeProducts) {
                     <img src="${opt.image}">
                         <span class="name">${opt.name}</span>
                         <span class="price"> ${opt.price.toFixed(2).replace(".", ",")} DH</span>
-                    
-                        <button id="ajouterP">ajouter</button>
+                        <button id="ajouterP" class="ajouterP" data-id="${opt.id}">ajouter</button>
                     </div>
         `
     });
@@ -196,90 +195,41 @@ recherche.addEventListener("input", Recherche);
 function Recherche() {
     coffeeProducts.forEach(() => {
         let value = recherche.value.toLocaleLowerCase();
-        // console.log(value);
-        // if (liste_pro.name.toLowerCase().includes("value")){
-        //     affichage();
-        // }
-        // 
-        // let name = opt.name.toLocaleLowerCase();
-        // console.log(name);
-        const result = coffeeProducts.filter((opt) => {
 
+        const result = coffeeProducts.filter((opt) => {
 
             // console.log(opt.name.toLocaleLowerCase().includes(value));
             return opt.name.toLocaleLowerCase().includes(value);
-
-
-
-
-            // // console.log("iiiiiiiiii");
-            // liste_pro.innerHTML += `
-
-            //             <div class="divcoffeProduct">
-            //             <img src="${opt.image}">
-            //                 <span class="name">${opt.name}</span>
-            //                 <span class="price"> ${opt.price.toFixed(2).replace(".", ",")} DH</span>
-
-            //                 <button id="ajouterP">ajouter</button>
-            //             </div>
-            // `
-
         });
 
 
         affichage(result);
         // console.log(result);
-
-
-
-
-
-
-
-
-        // if(name.includes(value)){
-
-        //     liste_pro.innerHTML = "";
-
-        //     console.log("iiiiiiiiii");
-        //     liste_pro.innerHTML += `
-
-        //                 <div class="divcoffeProduct">
-        //                 <img src="${opt.image}">
-        //                     <span class="name">${opt.name}</span>
-        //                     <span class="price"> ${opt.price.toFixed(2).replace(".", ",")} DH</span>
-
-        //                     <button id="ajouterP">ajouter</button>
-        //                 </div>
-        //     `
-        // }
-
-
     });
 
 }
-const AjouterP = document.querySelectorAll(`#ajouterP`);
-// console.log(AjouterP);
-for (let i = 0; i < AjouterP.length; i++) {
-    AjouterP[i].addEventListener("click", ajouterProduit);
-}
+const liste = document.getElementById("Produits");
+// console.log(liste);
+
+liste.addEventListener("click", function(e) {
+
+    if (e.target.classList.contains("ajouterP")) {
+        // console.log(e.target);
+        
+        const productId = e.target.dataset.id;
+        // console.log(e.target.dataset.id);
+        
+        ajouterProduit(productId);
+    }
+
+});
 
 function ajouterProduit(){
-    let name;
-    let nameChoix;
-    coffeeCart.forEach((opt)=>{
-        name = opt.name;
-        // console.log(name);
-        const choix = document.querySelectorAll(`.name`);
-        // console.log(choix);
-        for(let i = 0; i < choix.length ; i++){
-            nameChoix = choix[i].textContent;
-            // console.log(nameChoix);
-        }   
-        if(name == nameChoix){
-        console.log("yyy");
-    }
-    });
+
+    
+    
+
+    
 
 
 
@@ -292,8 +242,7 @@ function ajouterProduit(){
 
 
 
-
-    dialog.close();
+    // dialog.close();
 }
 
 
