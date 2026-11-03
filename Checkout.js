@@ -224,26 +224,82 @@ liste.addEventListener("click", function(e) {
 
 });
 
-function ajouterProduit(){
+function ajouterProduit(productId) {
 
-    
-    
+    const produit = coffeeProducts.find(opt => opt.id === productId);
+// console.log(produit);
 
-    
+    const produitExiste = coffeeCart.find(opt => opt.id === productId);
 
+    if (produitExiste) {
 
+        produitExiste.quantity++;
 
+    } else {
 
+        coffeeCart.push({
+            id: produit.id,
+            name: produit.name,
+            price: produit.price,
+            quantity: 1,
+            image: produit.image
+        });
 
+    }
 
+    const panier = document.getElementById("panier");
+// console.log(panier);
 
+    panier.innerHTML = "";
 
+    coffeeCart.forEach((opt) => {
 
+        let sousTotal = opt.price * opt.quantity;
+// console.log(sousTotal);
 
+        panier.innerHTML += `
+            <article class="produit">
 
+                <img src="${opt.image}" alt="">
 
-    // dialog.close();
+                <div>
+                    <span class="name">${opt.name}</span>
+
+                    <small class="sousprix">Sous Prix :</small>
+
+                    <span class="price">${sousTotal.toFixed(2).replace(".", ",")} DH
+                    </span>
+                </div>
+
+                <div>
+                    <button data-x="${opt.id}" class="add">+</button>
+
+                    <span class="quantity">${opt.quantity}</span>
+
+                    <button data-y="${opt.id}" class="minus">-</button>
+                </div>
+
+            </article>
+        `;
+ initiateBtnsEvents();
+
+    });
+    let total = 0;
+    coffeeCart.forEach((opt) => {
+        total += opt.price * opt.quantity;
+
+    });
+    document.getElementById("total").textContent =`${total.toFixed(2).replace(".", ",")} DH`;
+
+    dialog.close();
 }
+
+
+
+
+
+
+
 
 
 
