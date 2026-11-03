@@ -1,282 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Back-office.css">
     <title>Document</title>
 </head>
+
 <body>
-    
-<form id="productForm">
+    <header>
+        <div id="div-left" class="vers01">
+            <div>
+                <img src="assets/icons/Brume.png" alt="">
+            </div>
+            <div>
+                <p>BRUME</p>
+            </div>
+        </div>
+        <nav>
+            <a href="">L’atelier café</a>
+            <a href="">Notre savoir-faire</a>
+            <a href="">Besoin d’aide ?</a>
+        </nav>
+        <div id="div-right">
+            <div>
+                <img src="assets/icons/Panier.png" alt="">
+            </div>
+            <div>
+                <p id="nmb">0</p>
+            </div>
+        </div>
+    </header>
+    <main>
+        <form id="productForm">
 
-    <section id="step1">
+            <section id="step1">
 
-        <h2>Étape 1 : Informations générales</h2>
+                <h2>Étape 1 : Informations générales</h2>
 
+                <div>
+                    <label for="productName">Nom de la boisson :</label>
+                    <input type="text" id="productName" name="productName" placeholder="Ex : Latte Caramel" required>
+                </div>
+
+                <div>
+                    <label for="price">Prix de base :</label>
+                    <input type="number" id="price" name="price" min="0" step="0.01" placeholder="Ex : 35.00" required>
+                </div>
+
+                <div>
+                    <label for="description">Description :</label>
+                    <textarea id="description" name="description" placeholder="Décrivez votre boisson..."
+                        required></textarea>
+                </div>
+
+                <div>
+                    <label for="productImage">Image du produit :</label>
+                    <input type="url" id="productImage" name="productImage" placeholder="https://example.com/image.jpg"
+                        required>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="isPromotion" name="isPromotion">
+                    <label for="isPromotion">Produit en promotion</label>
+                </div>
+
+                <div id="promotion" hidden>
+
+                    <div>
+                        <label for="count">Pourcentage de réduction :</label>
+                        <input type="number" id="count" name="count" min="1" max="100" placeholder="Ex : 20">
+                    </div>
+
+                    <div>
+                        <label for="endDate">Date de fin :</label>
+                        <input type="date" id="endDate" name="endDate">
+                    </div>
+
+                </div>
+
+            </section>
+            <section id="step2">
+
+                <h2>Étape 2 : Caractéristiques & Options</h2>
+
+                <div>
+                    <label for="origin">Origine des grains :</label>
+
+                    <select id="origin" name="origin" required>
+                        <option value="" selected disabled>Choisir une origine</option>
+                        <option value="Colombie">Colombie</option>
+                        <option value="Éthiopie">Éthiopie</option>
+                        <option value="Brésil">Brésil</option>
+                        <option value="Mélange Maison">Mélange Maison</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="intensity">Niveau de torréfaction / Intensité :</label>
+
+                    <input type="range" id="intensity" name="intensity" min="1" max="10" value="5">
+
+                </div>
+
+                <fieldset>
+                    <legend>Température :</legend>
+
+                    <div>
+                        <input type="radio" id="chaud" name="temperature" value="Chaud" required>
+                        <label for="chaud">Chaud</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="glase" name="temperature" value="Glacé">
+                        <label for="glase">Glacé</label>
+                    </div>
+
+                </fieldset>
+
+                <fieldset>
+                    <legend>Tailles disponibles :</legend>
+
+                    <div>
+                        <input type="checkbox" id="small" name="sizes" value="Small">
+                        <label for="small">Small</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="medium" name="sizes" value="Medium">
+                        <label for="medium">Medium</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="large" name="sizes" value="Large">
+                        <label for="large">Large</label>
+                    </div>
+
+                </fieldset>
+
+                <fieldset>
+                    <legend>Options de lait :</legend>
+
+                    <div>
+                        <input type="checkbox" id="milkVache" name="milkOptions" value="Vache">
+                        <label for="milkVache">Vache</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="milkAvoine" name="milkOptions" value="Avoine">
+                        <label for="milkAvoine">Avoine</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="milkSoja" name="milkOptions" value="Soja">
+                        <label for="milkSoja">Soja</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="milkAmande" name="milkOptions" value="Amande">
+                        <label for="milkAmande">Amande</label>
+                    </div>
+
+                </fieldset>
+
+                <fieldset>
+                    <legend>Suppléments :</legend>
+
+                    <div>
+                        <input type="checkbox" id="vanilla" name="supplements" value="Vanille">
+                        <label for="vanilla">Vanille</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="caramel" name="supplements" value="Caramel">
+                        <label for="caramel">Caramel</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="noisette" name="supplements" value="Noisette">
+                        <label for="noisette">Noisette</label>
+                    </div>
+
+                </fieldset>
+
+            </section>
+            <section id="step3">
+                <h2>Étape 3 : Récapitulatif & Validation</h2>
+                <article></article>
+                <button type="submit" id="submit">Confirmer la création</button>
+            </section>
+            <div>
+                <button type="button" id="previousBtn" >Précédent</button>
+                <button type="button" id="nextBtn">Suivant</button>
+            </div>
+
+        </form>
+    </main>
+    <footer>
         <div>
-            <label for="productName">Nom de la boisson :</label>
-            <input
-                type="text"
-                id="productName"
-                name="productName"
-                placeholder="Ex : Latte Caramel"
-                required
-            >
+            <p>BRUME — Le goût de votre rythme.</p>
         </div>
-
         <div>
-            <label for="price">Prix de base :</label>
-            <input
-                type="number"
-                id="price"
-                name="price"
-                min="0"
-                step="0.01"
-                placeholder="Ex : 35.00"
-                required
-            >
+            <p>Une création unique, la vôtre.</p>
         </div>
-
-        <div>
-            <label for="description">Description :</label>
-            <textarea
-                id="description"
-                name="description"
-                placeholder="Décrivez votre boisson..."
-                required
-            ></textarea>
-        </div>
-
-        <div>
-            <label for="productImage">Image du produit :</label>
-            <input
-                type="url"
-                id="productImage"
-                name="productImage"
-                placeholder="https://example.com/image.jpg"
-                required
-            >
-        </div>
-
-        <div>
-            <input
-                type="checkbox"
-                id="isPromotion"
-                name="isPromotion"
-            >
-            <label for="isPromotion">Produit en promotion</label>
-        </div>
-
-        <div id="promotion" hidden>
-
-            <div>
-                <label for="count">Pourcentage de réduction :</label>
-                <input
-                    type="number"
-                    id="count"
-                    name="count"
-                    min="1"
-                    max="100"
-                    placeholder="Ex : 20"
-                >
-            </div>
-
-            <div>
-                <label for="endDate">Date de fin :</label>
-                <input
-                    type="date"
-                    id="endDate"
-                    name="endDate"
-                >
-            </div>
-
-        </div>
-
-    </section>
-    <section id="step2">
-
-        <h2>Étape 2 : Caractéristiques & Options</h2>
-
-        <div>
-            <label for="origin">Origine des grains :</label>
-
-            <select id="origin" name="origin" required>
-                <option value=""  selected disabled>Choisir une origine</option>
-                <option value="Colombie">Colombie</option>
-                <option value="Éthiopie">Éthiopie</option>
-                <option value="Brésil">Brésil</option>
-                <option value="Mélange Maison">Mélange Maison</option>
-            </select>
-        </div>
-
-        <div>
-            <label for="intensity">Niveau de torréfaction / Intensité :</label>
-
-            <input
-                type="range"
-                id="intensity"
-                name="intensity"
-                min="1"
-                max="10"
-                value="5"
-            >
-
-        </div>
-
-        <fieldset>
-            <legend>Température :</legend>
-
-            <div>
-                <input
-                    type="radio"
-                    id="chaud"
-                    name="temperature"
-                    value="Chaud"
-                    required
-                >
-                <label for="chaud">Chaud</label>
-            </div>
-
-            <div>
-                <input
-                    type="radio"
-                    id="glase"
-                    name="temperature"
-                    value="Glacé"
-                >
-                <label for="glase">Glacé</label>
-            </div>
-
-        </fieldset>
-
-        <fieldset>
-            <legend>Tailles disponibles :</legend>
-
-            <div>
-                <input
-                    type="checkbox"
-                    id="small"
-                    name="sizes"
-                    value="Small"
-                >
-                <label for="small">Small</label>
-            </div>
-
-            <div>
-                <input
-                    type="checkbox"
-                    id="medium"
-                    name="sizes"
-                    value="Medium"
-                >
-                <label for="medium">Medium</label>
-            </div>
-
-            <div>
-                <input
-                    type="checkbox"
-                    id="large"
-                    name="sizes"
-                    value="Large"
-                >
-                <label for="large">Large</label>
-            </div>
-
-        </fieldset>
-
-        <fieldset>
-            <legend>Options de lait :</legend>
-
-            <div>
-                <input
-                    type="checkbox"
-                    id="milkVache"
-                    name="milkOptions"
-                    value="Vache"
-                >
-                <label for="milkVache">Vache</label>
-            </div>
-
-            <div>
-                <input
-                    type="checkbox"
-                    id="milkAvoine"
-                    name="milkOptions"
-                    value="Avoine"
-                >
-                <label for="milkAvoine">Avoine</label>
-            </div>
-
-            <div>
-                <input
-                    type="checkbox"
-                    id="milkSoja"
-                    name="milkOptions"
-                    value="Soja"
-                >
-                <label for="milkSoja">Soja</label>
-            </div>
-
-            <div>
-                <input
-                    type="checkbox"
-                    id="milkAmande"
-                    name="milkOptions"
-                    value="Amande"
-                >
-                <label for="milkAmande">Amande</label>
-            </div>
-
-        </fieldset>
-
-        <fieldset>
-            <legend>Suppléments :</legend>
-
-            <div>
-                <input
-                    type="checkbox"
-                    id="vanilla"
-                    name="supplements"
-                    value="Vanille"
-                >
-                <label for="vanilla">Vanille</label>
-            </div>
-
-            <div>
-                <input
-                    type="checkbox"
-                    id="caramel"
-                    name="supplements"
-                    value="Caramel"
-                >
-                <label for="caramel">Caramel</label>
-            </div>
-
-            <div>
-                <input
-                    type="checkbox"
-                    id="noisette"
-                    name="supplements"
-                    value="Noisette"
-                >
-                <label for="noisette">Noisette</label>
-            </div>
-
-        </fieldset>
-
-    </section>
-    <section id="step3">
-        <h2>Étape 3 : Récapitulatif & Validation</h2>
-        <article></article>
-    </section>
-    <div>
-        <button type="button" id="previousBtn">Précédent</button>
-        <button type="button" id="nextBtn">Suivant</button>
-    </div>
-
-</form>
-
-<script src="Back-office.js"></script> 
+    </footer>
+    <script src="Back-office.js"></script>
 </body>
+
 </html>
