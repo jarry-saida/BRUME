@@ -4,26 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Back-office.css">
+    <link rel="stylesheet" href="output.css">
     <title>Document</title>
 </head>
 
-<body>
-    <header>
-        <div id="div-left" class="vers01">
-            <div>
+<body class="m-0 min-h-screen bg-[#F8F5EE] flex flex-col">
+    <header class="flex justify-between gap-3 bg-[#FAF7F0] py-8 px-16">
+        <div id="div-left" class="flex flex-row gap-2">
+            <div class="flex items-center">
                 <img src="assets/icons/Brume.png" alt="">
             </div>
-            <div>
-                <p>BRUME</p>
+            <div class="flex items-center text-[#30291F]">
+                <a href="Checkout .html">
+                    <p>BRUME</p>
+                </a>
             </div>
         </div>
-        <nav>
-            <a href="">L’atelier café</a>
-            <a href="">Notre savoir-faire</a>
-            <a href="">Besoin d’aide ?</a>
+        <nav class="flex items-center gap-8">
+            <a href="" class="text-[#796A59] no-underline active:text-[#394B32]">L’atelier café</a>
+            <a href="" class="text-[#796A59] no-underline active:text-[#394B32]">Notre savoir-faire</a>
+            <a href="" class="text-[#796A59] no-underline active:text-[#394B32]">Besoin d’aide ?</a>
         </nav>
-        <div id="div-right">
+        <div id="div-right" class="flex items-center gap-2">
             <div>
                 <img src="assets/icons/Panier.png" alt="">
             </div>
@@ -32,25 +34,27 @@
             </div>
         </div>
     </header>
-    <main>
-        <h1>Ajouter un nouveau produit.</h1>
-        <section id="progressBar">
-            <div>
-                <span>1</span>
-                <span>Step 1</span>
+    <main class="flex-1 w-full max-w-5xl mx-auto px-6 py-10" id="main">
+        <h1 class="text-2xl text-[#30291F] mb-8">Ajouter un nouveau produit.</h1>
+        <section id="progressBar" class="flex items-center gap-6 mb-10">
+            <div class="flex items-center gap-2">
+                <span class="w-8 h-8 flex items-center justify-center rounded-full bg-[#394B32] text-white">1</span>
+                <span class="text-[#394B32]">Step 1</span>
             </div>
-            <div>
-                <span>2</span>
-                <span>Step 2</span>
+            <div class="flex-1 h-px bg-[#E9DCC7]"></div>
+            <div class="flex items-center gap-2">
+                <span class="w-8 h-8 flex items-center justify-center rounded-full bg-[#E9DCC7] text-[#796A59]">2</span>
+                <span class="text-[#796A59]">Step 2</span>
             </div>
-            <div>
-                <span>3</span>
-                <span>Step 3</span>
+            <div class="flex-1 h-px bg-[#E9DCC7]"></div>
+            <div class="flex items-center gap-2">
+                <span class="w-8 h-8 flex items-center justify-center rounded-full bg-[#E9DCC7] text-[#796A59]">3</span>
+                <span class="text-[#796A59]">Step 3</span>
             </div>
         </section>
-        <form id="productForm">
+        <form id="productForm" class="bg-white rounded-2xl shadow-sm border border-[#E5DCCF] p-5">
 
-            <section id="step1">
+            <section id="step1" class="space-y-6">
 
                 <h2>Étape 1 : Informations générales</h2>
 
@@ -201,23 +205,28 @@
 
             </section>
             <section id="step3">
-                <h2>Étape 3 : Récapitulatif & Validation</h2>
-                <article></article>
-                <button type="submit" id="submit">Confirmer la création</button>
+                <h2 class="text-xl md:text-2xl text-[#394B32] border-b border-[#E9DCC7] pb-4 mb-8">Étape 3 :
+                    Récapitulatif & Validation</h2>
+                <article class="bg-[#F8F5EE] rounded-xl p-5 text-[#30291F]"></article>
             </section>
-            <div>
-                <button type="button" id="previousBtn">Précédent</button>
-                <button type="button" id="nextBtn">Suivant</button>
+            <div class="flex justify-between items-center gap-4 border-t border-[#E9DCC7] pt-6">
+                <button type="button" id="previousBtn"
+                    class="bg-[#394B32] border border-[#394B32] rounded-xl py-4 px-8 text-white">Précédent</button>
+                <button type="button" id="nextBtn"
+                    class="bg-[#394B32] border border-[#394B32] rounded-xl py-4 px-8 text-white">Suivant</button>
+                <button type="submit" id="submit"
+                    class="bg-[#394B32] border border-[#394B32] rounded-xl py-4 px-8 text-white">Confirmer la
+                    création</button>
             </div>
 
         </form>
     </main>
-    <footer>
+    <footer class="flex justify-between gap-3 bg-[#FAF7F0] py-6 px-16">
         <div>
-            <p>BRUME — Le goût de votre rythme.</p>
+            <p class="text-[#796A59]">BRUME — Le goût de votre rythme.</p>
         </div>
         <div>
-            <p>Une création unique, la vôtre.</p>
+            <p class="text-[#796A59]">Une création unique, la vôtre.</p>
         </div>
     </footer>
     <script src="Back-office.js"></script>
