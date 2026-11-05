@@ -36,50 +36,66 @@
     </header>
     <main class="flex-1 w-full max-w-5xl mx-auto px-6 py-10" id="main">
         <h1 class="text-2xl text-[#30291F] mb-8">Ajouter un nouveau produit.</h1>
-        <section id="progressBar" class="flex items-center gap-6 mb-10 ">
+        <section id="progressBar" class="flex items-center gap-6 mb-10">
+
             <div class="flex items-center gap-2">
-                <span class="w-8 h-8 flex items-center justify-center rounded-full bg-[#394B32] text-white">1</span>
-                <span class="text-[#394B32]">Step 1</span>
+                <span id="circle1"
+                    class="w-8 h-8 flex items-center justify-center rounded-full bg-[#394B32] text-white">1</span>
+                <span id="text1" class="text-[#394B32]">Step 1</span>
             </div>
-            <div class="flex-1 h-px bg-[#E9DCC7]"></div>
+
+            <div id="line1" class="flex-1 h-px bg-[#E9DCC7]"></div>
+
             <div class="flex items-center gap-2">
-                <span class="w-8 h-8 flex items-center justify-center rounded-full bg-[#E9DCC7] text-[#796A59]">2</span>
-                <span class="text-[#796A59]">Step 2</span>
+                <span id="circle2"
+                    class="w-8 h-8 flex items-center justify-center rounded-full bg-[#E9DCC7] text-[#796A59]">2</span>
+                <span id="text2" class="text-[#796A59]">Step 2</span>
             </div>
-            <div class="flex-1 h-px bg-[#E9DCC7]"></div>
+
+            <div id="line2" class="flex-1 h-px bg-[#E9DCC7]"></div>
+
             <div class="flex items-center gap-2">
-                <span class="w-8 h-8 flex items-center justify-center rounded-full bg-[#E9DCC7] text-[#796A59]">3</span>
-                <span class="text-[#796A59]">Step 3</span>
+                <span id="circle3"
+                    class="w-8 h-8 flex items-center justify-center rounded-full bg-[#E9DCC7] text-[#796A59]">3</span>
+                <span id="text3" class="text-[#796A59]">Step 3</span>
             </div>
+
         </section>
         <form id="productForm" class="bg-white rounded-2xl shadow-sm border border-[#E5DCCF] p-5">
 
             <section id="step1" class="space-y-6">
 
-                <h2 class="text-xl md:text-2xl  text-[#394832] border-b border-[#E9DCC7] pb-4 mb-6">Étape 1 : Informations générales</h2>
+                <h2 class="text-xl md:text-2xl  text-[#394832] border-b border-[#E9DCC7] pb-4 mb-6">Étape 1 :
+                    Informations générales</h2>
 
                 <div id="divNom" class="space-y-2">
                     <label for="productName" class="block text-sm  text-[#302C24] mb-2">Nom de la boisson :</label>
-                    <input type="text" id="productName" name="productName" placeholder="Ex : Latte Caramel" class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] " required>
+                    <input type="text" id="productName" name="productName" placeholder="Ex : Latte Caramel"
+                        class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] "
+                        required>
                 </div>
 
                 <div id="divPrix" class="space-y-2">
                     <label for="price" class="block text-sm  text-[#302C24] mb-2">Prix de base :</label>
-                    <input type="number" id="price" name="price" min="0" step="0.01" placeholder="Ex : 35.00"  class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] " required>
+                    <input type="number" id="price" name="price" min="0" step="0.01" placeholder="Ex : 35.00"
+                        class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] "
+                        required>
                 </div>
 
                 <div id="divDesc">
                     <label for="description" class="block text-sm  text-[#302C24] mb-2">Description :</label>
-                    <textarea id="description" name="description" placeholder="Décrivez votre boisson..." class="w-full min-h-28  border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] "></textarea>
+                    <textarea id="description" name="description" placeholder="Décrivez votre boisson..."
+                        class="w-full min-h-28  border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] "></textarea>
                 </div>
 
                 <div id="divImage" class="space-y-2">
                     <label for="productImage" class="block text-sm  text-[#302C24] mb-2">Image du produit :</label>
-                    <input type="url" id="productImage" name="productImage" placeholder="https://example.com/image.jpg"  class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] "
+                    <input type="url" id="productImage" name="productImage" placeholder="https://example.com/image.jpg"
+                        class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] "
                         required>
                 </div>
 
-                <div id="divPromo"  class="flex items-center gap-2">
+                <div id="divPromo" class="flex items-center gap-2">
                     <input type="checkbox" id="isPromotion" name="isPromotion" class="w-4 h-4 ">
                     <label for="isPromotion" class=" text-sm  text-[#302C24] mb-2">Produit en promotion</label>
                 </div>
@@ -88,12 +104,14 @@
 
                     <div id="div%" class="space-y-2">
                         <label for="count" class="block text-sm  text-[#302C24] mb-2">Pourcentage de réduction :</label>
-                        <input type="number" id="count" name="count" min="1" max="100" placeholder="Ex : 20"  class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
+                        <input type="number" id="count" name="count" min="1" max="100" placeholder="Ex : 20"
+                            class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
                     </div>
 
                     <div id="divDate" class="space-y-2">
                         <label for="endDate" class="block text-sm  text-[#302C24] mb-2">Date de fin :</label>
-                        <input type="date" id="endDate" name="endDate"  class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
+                        <input type="date" id="endDate" name="endDate"
+                            class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
                     </div>
 
                 </div>
@@ -101,12 +119,15 @@
             </section>
             <section id="step2" class="space-y-6">
 
-                <h2 class="text-xl md:text-2xl  text-[#394832] border-b border-[#E9DCC7] pb-4 mb-6">Étape 2 : Caractéristiques & Options</h2>
+                <h2 class="text-xl md:text-2xl  text-[#394832] border-b border-[#E9DCC7] pb-4 mb-6">Étape 2 :
+                    Caractéristiques & Options</h2>
 
                 <div>
                     <label for="origin" class="block text-sm  text-[#302C24] mb-2">Origine des grains :</label>
 
-                    <select id="origin" name="origin" class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832]" required>
+                    <select id="origin" name="origin"
+                        class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832]"
+                        required>
                         <option value="" selected disabled>Choisir une origine</option>
                         <option value="Colombie">Colombie</option>
                         <option value="Éthiopie">Éthiopie</option>
@@ -116,9 +137,11 @@
                 </div>
 
                 <div class="space-y-2">
-                    <label for="intensity" class="block text-sm  text-[#302C24] mb-2">Niveau de torréfaction / Intensité :</label>
+                    <label for="intensity" class="block text-sm  text-[#302C24] mb-2">Niveau de torréfaction / Intensité
+                        :</label>
 
-                    <input type="range" id="intensity" name="intensity" min="1" max="10" value="5"  class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
+                    <input type="range" id="intensity" name="intensity" min="1" max="10" value="5"
+                        class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
 
                 </div>
 
@@ -126,12 +149,15 @@
                     <legend class="text-sm  text-[#394832] px-2">Température :</legend>
 
                     <div class="space-y-2">
-                        <input type="radio" id="chaud" name="temperature" value="Chaud"  class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] " required>
+                        <input type="radio" id="chaud" name="temperature" value="Chaud"
+                            class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] "
+                            required>
                         <label for="chaud" class="block text-sm  text-[#302C24] mb-2">Chaud</label>
                     </div>
 
                     <div class="space-y-2">
-                        <input type="radio" id="glase" name="temperature" value="Glacé"  class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
+                        <input type="radio" id="glase" name="temperature" value="Glacé"
+                            class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
                         <label for="glase" class="block text-sm  text-[#302C24] mb-2">Glacé</label>
                     </div>
 
@@ -141,17 +167,20 @@
                     <legend class="text-sm  text-[#394832] px-2">Tailles disponibles :</legend>
 
                     <div class="space-y-2">
-                        <input type="checkbox" id="small" name="sizes" value="Small"  class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
+                        <input type="checkbox" id="small" name="sizes" value="Small"
+                            class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
                         <label for="small" class="block text-sm  text-[#302C24] mb-2">Small</label>
                     </div>
 
                     <div class="space-y-2">
-                        <input type="checkbox" id="medium" name="sizes" value="Medium"  class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
+                        <input type="checkbox" id="medium" name="sizes" value="Medium"
+                            class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
                         <label for="medium" class="block text-sm  text-[#302C24] mb-2">Medium</label>
                     </div>
 
                     <div class="space-y-2">
-                        <input type="checkbox" id="large" name="sizes" value="Large"  class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
+                        <input type="checkbox" id="large" name="sizes" value="Large"
+                            class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
                         <label for="large" class="block text-sm  text-[#302C24] mb-2">Large</label>
                     </div>
 
@@ -161,22 +190,26 @@
                     <legend class="text-sm  text-[#394832] px-2">Options de lait :</legend>
 
                     <div class="space-y-2">
-                        <input type="checkbox" id="milkVache" name="milkOptions" value="Vache"  class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
+                        <input type="checkbox" id="milkVache" name="milkOptions" value="Vache"
+                            class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
                         <label for="milkVache" class="block text-sm  text-[#302C24] mb-2">Vache</label>
                     </div>
 
                     <div class="space-y-2">
-                        <input type="checkbox" id="milkAvoine" name="milkOptions" value="Avoine"  class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
+                        <input type="checkbox" id="milkAvoine" name="milkOptions" value="Avoine"
+                            class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
                         <label for="milkAvoine" class="block text-sm  text-[#302C24] mb-2">Avoine</label>
                     </div>
 
                     <div class="space-y-2">
-                        <input type="checkbox" id="milkSoja" name="milkOptions" value="Soja"  class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
+                        <input type="checkbox" id="milkSoja" name="milkOptions" value="Soja"
+                            class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
                         <label for="milkSoja" class="block text-sm  text-[#302C24] mb-2">Soja</label>
                     </div>
 
                     <div class="space-y-2">
-                        <input type="checkbox" id="milkAmande" name="milkOptions" value="Amande"  class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
+                        <input type="checkbox" id="milkAmande" name="milkOptions" value="Amande"
+                            class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
                         <label for="milkAmande" class="block text-sm  text-[#302C24] mb-2">Amande</label>
                     </div>
 
@@ -186,17 +219,20 @@
                     <legend class="text-sm  text-[#394832] px-2">Suppléments :</legend>
 
                     <div class="space-y-2">
-                        <input type="checkbox" id="vanilla" name="supplements" value="Vanille"  class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
+                        <input type="checkbox" id="vanilla" name="supplements" value="Vanille"
+                            class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
                         <label for="vanilla" class="block text-sm  text-[#302C24] mb-2">Vanille</label>
                     </div>
 
                     <div class="space-y-2">
-                        <input type="checkbox" id="caramel" name="supplements" value="Caramel"  class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
+                        <input type="checkbox" id="caramel" name="supplements" value="Caramel"
+                            class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
                         <label for="caramel" class="block text-sm  text-[#302C24] mb-2">Caramel</label>
                     </div>
 
                     <div class="space-y-2">
-                        <input type="checkbox" id="noisette" name="supplements" value="Noisette"  class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
+                        <input type="checkbox" id="noisette" name="supplements" value="Noisette"
+                            class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
                         <label for="noisette" class="block text-sm  text-[#302C24] mb-2">Noisette</label>
                     </div>
 
