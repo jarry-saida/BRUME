@@ -36,7 +36,7 @@
     </header>
     <main class="flex-1 w-full max-w-5xl mx-auto px-6 py-10" id="main">
         <h1 class="text-2xl text-[#30291F] mb-8">Ajouter un nouveau produit.</h1>
-        <section id="progressBar" class="flex items-center gap-6 mb-10">
+        <section id="progressBar" class="flex items-center gap-6 mb-10 ">
             <div class="flex items-center gap-2">
                 <span class="w-8 h-8 flex items-center justify-center rounded-full bg-[#394B32] text-white">1</span>
                 <span class="text-[#394B32]">Step 1</span>
@@ -56,58 +56,57 @@
 
             <section id="step1" class="space-y-6">
 
-                <h2>Étape 1 : Informations générales</h2>
+                <h2 class="text-xl md:text-2xl  text-[#394832] border-b border-[#E9DCC7] pb-4 mb-6">Étape 1 : Informations générales</h2>
 
-                <div>
-                    <label for="productName">Nom de la boisson :</label>
-                    <input type="text" id="productName" name="productName" placeholder="Ex : Latte Caramel" required>
+                <div id="divNom" class="space-y-2">
+                    <label for="productName" class="block text-sm  text-[#302C24] mb-2">Nom de la boisson :</label>
+                    <input type="text" id="productName" name="productName" placeholder="Ex : Latte Caramel" class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] " required>
                 </div>
 
-                <div>
-                    <label for="price">Prix de base :</label>
-                    <input type="number" id="price" name="price" min="0" step="0.01" placeholder="Ex : 35.00" required>
+                <div id="divPrix" class="space-y-2">
+                    <label for="price" class="block text-sm  text-[#302C24] mb-2">Prix de base :</label>
+                    <input type="number" id="price" name="price" min="0" step="0.01" placeholder="Ex : 35.00"  class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] " required>
                 </div>
 
-                <div>
-                    <label for="description">Description :</label>
-                    <textarea id="description" name="description" placeholder="Décrivez votre boisson..."
-                        required></textarea>
+                <div id="divDesc">
+                    <label for="description" class="block text-sm  text-[#302C24] mb-2">Description :</label>
+                    <textarea id="description" name="description" placeholder="Décrivez votre boisson..." class="w-full min-h-28  border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] "></textarea>
                 </div>
 
-                <div>
-                    <label for="productImage">Image du produit :</label>
-                    <input type="url" id="productImage" name="productImage" placeholder="https://example.com/image.jpg"
+                <div id="divImage" class="space-y-2">
+                    <label for="productImage" class="block text-sm  text-[#302C24] mb-2">Image du produit :</label>
+                    <input type="url" id="productImage" name="productImage" placeholder="https://example.com/image.jpg"  class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] "
                         required>
                 </div>
 
-                <div>
-                    <input type="checkbox" id="isPromotion" name="isPromotion">
-                    <label for="isPromotion">Produit en promotion</label>
+                <div id="divPromo"  class="flex items-center gap-2">
+                    <input type="checkbox" id="isPromotion" name="isPromotion" class="w-4 h-4 ">
+                    <label for="isPromotion" class=" text-sm  text-[#302C24] mb-2">Produit en promotion</label>
                 </div>
 
                 <div id="promotion" hidden>
 
-                    <div>
-                        <label for="count">Pourcentage de réduction :</label>
-                        <input type="number" id="count" name="count" min="1" max="100" placeholder="Ex : 20">
+                    <div id="div%" class="space-y-2">
+                        <label for="count" class="block text-sm  text-[#302C24] mb-2">Pourcentage de réduction :</label>
+                        <input type="number" id="count" name="count" min="1" max="100" placeholder="Ex : 20"  class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
                     </div>
 
-                    <div>
-                        <label for="endDate">Date de fin :</label>
-                        <input type="date" id="endDate" name="endDate">
+                    <div id="divDate" class="space-y-2">
+                        <label for="endDate" class="block text-sm  text-[#302C24] mb-2">Date de fin :</label>
+                        <input type="date" id="endDate" name="endDate"  class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
                     </div>
 
                 </div>
 
             </section>
-            <section id="step2">
+            <section id="step2" class="space-y-6">
 
-                <h2>Étape 2 : Caractéristiques & Options</h2>
+                <h2 class="text-xl md:text-2xl  text-[#394832] border-b border-[#E9DCC7] pb-4 mb-6">Étape 2 : Caractéristiques & Options</h2>
 
                 <div>
-                    <label for="origin">Origine des grains :</label>
+                    <label for="origin" class="block text-sm  text-[#302C24] mb-2">Origine des grains :</label>
 
-                    <select id="origin" name="origin" required>
+                    <select id="origin" name="origin" class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832]" required>
                         <option value="" selected disabled>Choisir une origine</option>
                         <option value="Colombie">Colombie</option>
                         <option value="Éthiopie">Éthiopie</option>
@@ -116,96 +115,96 @@
                     </select>
                 </div>
 
-                <div>
-                    <label for="intensity">Niveau de torréfaction / Intensité :</label>
+                <div class="space-y-2">
+                    <label for="intensity" class="block text-sm  text-[#302C24] mb-2">Niveau de torréfaction / Intensité :</label>
 
-                    <input type="range" id="intensity" name="intensity" min="1" max="10" value="5">
+                    <input type="range" id="intensity" name="intensity" min="1" max="10" value="5"  class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
 
                 </div>
 
-                <fieldset>
-                    <legend>Température :</legend>
+                <fieldset class="border border-[#E5DCCF] rounded-xl p-5 space-y-4">
+                    <legend class="text-sm  text-[#394832] px-2">Température :</legend>
 
-                    <div>
-                        <input type="radio" id="chaud" name="temperature" value="Chaud" required>
-                        <label for="chaud">Chaud</label>
+                    <div class="space-y-2">
+                        <input type="radio" id="chaud" name="temperature" value="Chaud"  class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] " required>
+                        <label for="chaud" class="block text-sm  text-[#302C24] mb-2">Chaud</label>
                     </div>
 
-                    <div>
-                        <input type="radio" id="glase" name="temperature" value="Glacé">
-                        <label for="glase">Glacé</label>
-                    </div>
-
-                </fieldset>
-
-                <fieldset>
-                    <legend>Tailles disponibles :</legend>
-
-                    <div>
-                        <input type="checkbox" id="small" name="sizes" value="Small">
-                        <label for="small">Small</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" id="medium" name="sizes" value="Medium">
-                        <label for="medium">Medium</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" id="large" name="sizes" value="Large">
-                        <label for="large">Large</label>
+                    <div class="space-y-2">
+                        <input type="radio" id="glase" name="temperature" value="Glacé"  class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
+                        <label for="glase" class="block text-sm  text-[#302C24] mb-2">Glacé</label>
                     </div>
 
                 </fieldset>
 
-                <fieldset>
-                    <legend>Options de lait :</legend>
+                <fieldset class="border border-[#E5DCCF] rounded-xl p-5 space-y-4">
+                    <legend class="text-sm  text-[#394832] px-2">Tailles disponibles :</legend>
 
-                    <div>
-                        <input type="checkbox" id="milkVache" name="milkOptions" value="Vache">
-                        <label for="milkVache">Vache</label>
+                    <div class="space-y-2">
+                        <input type="checkbox" id="small" name="sizes" value="Small"  class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
+                        <label for="small" class="block text-sm  text-[#302C24] mb-2">Small</label>
                     </div>
 
-                    <div>
-                        <input type="checkbox" id="milkAvoine" name="milkOptions" value="Avoine">
-                        <label for="milkAvoine">Avoine</label>
+                    <div class="space-y-2">
+                        <input type="checkbox" id="medium" name="sizes" value="Medium"  class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
+                        <label for="medium" class="block text-sm  text-[#302C24] mb-2">Medium</label>
                     </div>
 
-                    <div>
-                        <input type="checkbox" id="milkSoja" name="milkOptions" value="Soja">
-                        <label for="milkSoja">Soja</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" id="milkAmande" name="milkOptions" value="Amande">
-                        <label for="milkAmande">Amande</label>
+                    <div class="space-y-2">
+                        <input type="checkbox" id="large" name="sizes" value="Large"  class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
+                        <label for="large" class="block text-sm  text-[#302C24] mb-2">Large</label>
                     </div>
 
                 </fieldset>
 
-                <fieldset>
-                    <legend>Suppléments :</legend>
+                <fieldset class="border border-[#E5DCCF] rounded-xl p-5 space-y-4">
+                    <legend class="text-sm  text-[#394832] px-2">Options de lait :</legend>
 
-                    <div>
-                        <input type="checkbox" id="vanilla" name="supplements" value="Vanille">
-                        <label for="vanilla">Vanille</label>
+                    <div class="space-y-2">
+                        <input type="checkbox" id="milkVache" name="milkOptions" value="Vache"  class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
+                        <label for="milkVache" class="block text-sm  text-[#302C24] mb-2">Vache</label>
                     </div>
 
-                    <div>
-                        <input type="checkbox" id="caramel" name="supplements" value="Caramel">
-                        <label for="caramel">Caramel</label>
+                    <div class="space-y-2">
+                        <input type="checkbox" id="milkAvoine" name="milkOptions" value="Avoine"  class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
+                        <label for="milkAvoine" class="block text-sm  text-[#302C24] mb-2">Avoine</label>
                     </div>
 
-                    <div>
-                        <input type="checkbox" id="noisette" name="supplements" value="Noisette">
-                        <label for="noisette">Noisette</label>
+                    <div class="space-y-2">
+                        <input type="checkbox" id="milkSoja" name="milkOptions" value="Soja"  class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
+                        <label for="milkSoja" class="block text-sm  text-[#302C24] mb-2">Soja</label>
+                    </div>
+
+                    <div class="space-y-2">
+                        <input type="checkbox" id="milkAmande" name="milkOptions" value="Amande"  class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
+                        <label for="milkAmande" class="block text-sm  text-[#302C24] mb-2">Amande</label>
+                    </div>
+
+                </fieldset>
+
+                <fieldset class="border border-[#E5DCCF] rounded-xl p-5 space-y-4">
+                    <legend class="text-sm  text-[#394832] px-2">Suppléments :</legend>
+
+                    <div class="space-y-2">
+                        <input type="checkbox" id="vanilla" name="supplements" value="Vanille"  class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
+                        <label for="vanilla" class="block text-sm  text-[#302C24] mb-2">Vanille</label>
+                    </div>
+
+                    <div class="space-y-2">
+                        <input type="checkbox" id="caramel" name="supplements" value="Caramel"  class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
+                        <label for="caramel" class="block text-sm  text-[#302C24] mb-2">Caramel</label>
+                    </div>
+
+                    <div class="space-y-2">
+                        <input type="checkbox" id="noisette" name="supplements" value="Noisette"  class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
+                        <label for="noisette" class="block text-sm  text-[#302C24] mb-2">Noisette</label>
                     </div>
 
                 </fieldset>
 
             </section>
-            <section id="step3">
-                <h2 class="text-xl md:text-2xl text-[#394B32] border-b border-[#E9DCC7] pb-4 mb-8">Étape 3 :
+            <section id="step3" class="space-y-6">
+                <h2 class="text-xl md:text-2xl  text-[#394832] border-b border-[#E9DCC7] pb-4 mb-6">Étape 3 :
                     Récapitulatif & Validation</h2>
                 <article class="bg-[#F8F5EE] rounded-xl p-5 text-[#30291F]"></article>
             </section>
