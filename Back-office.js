@@ -1,3 +1,4 @@
+
 const InfoProduit = {
     nom : null ,
     prix : null,
@@ -24,9 +25,9 @@ const submitBtn = document.getElementById("submit");
 // console.log(submitBtn);
 submitBtn.style.display = "none";
 precedentBtn.style.display = "none";
-suivantBtn.addEventListener("click",ValidationStep1);
+suivantBtn.addEventListener("click",NavigationStep1);
 
-precedentBtn.addEventListener("click",ValidationStep2_3);
+precedentBtn.addEventListener("click",NavigationStep2_3);
 function affichageStep1(){
     if(regexStep1()){
         step2.style.display = "block";
@@ -52,20 +53,28 @@ function affichageStep3(){
     suivantBtn.style.display = "none";
     submitBtn.style.display = "block";
 }
-function ValidationStep1(){
+function NavigationStep1(){
     if (step2.style.display === "none") {
         affichageStep1();
+changeProgress(2);
+
     }else{
         affichageStep3();
+changeProgress(3);
+
     }
 }
-function ValidationStep2_3(){
+function NavigationStep2_3(){
     if ((step3.style.display === "block")) {
         affichageStep2();
+changeProgress(2);
+
     }else if ((step2.style.display === "block") && (step3.style.display === "none")){
         step2.style.display = "none";
         step1.style.display = "block";
         precedentBtn.style.display = "none";
+changeProgress(1);
+
     }
 }
 const checkboxPromotion = document.getElementById("isPromotion");
@@ -221,7 +230,7 @@ divDate.querySelector("span")?.remove();
 function regexPromotion() {
 
     if (inputPromo.checked) {
-        console.log("checked");
+        // console.log("checked");
         
 
         if (regexDate() & regexPourcentage()) {
@@ -231,7 +240,7 @@ function regexPromotion() {
         }
 
     } else {
-        console.log(" non checked");
+        // console.log(" non checked");
 
         return true;
     }
@@ -251,12 +260,69 @@ function regexStep1() {
 //     }
 //     return false;
 // }
-// function regexStep1(){
-//     // console.log(inputName.value);
+const circle1 = document.getElementById("circle1");
+// console.log(circle1);
+
+const circle2 = document.getElementById("circle2");
+// console.log(circle2);
+
+const circle3 = document.getElementById("circle3");
+// console.log(circle3);
+
+const text1 = document.getElementById("text1");
+// console.log(text1);
+
+const text2 = document.getElementById("text2");
+// console.log(text2);
+
+const text3 = document.getElementById("text3");
+// console.log(text3);
+
+const line1 = document.getElementById("line1");
+// console.log(line1);
+
+const line2 = document.getElementById("line2");
+// console.log(line2);
+function changeProgress(step) {
+
+    const circles = [circle1, circle2, circle3];
+    // console.log(circles);
     
+    const texts = [text1, text2, text3];
+    // console.log(texts);
 
+    const lines = [line1, line2];
+    // console.log(lines);
+    for (let i = 0; i < circles.length; i++) {
+        if (i < step) {
+            // console.log(circles[i]);
 
-// }
+            circles[i].classList.replace("bg-[#E9DCC7]", "bg-[#394B32]");
+            circles[i].classList.replace("text-[#796A59]", "text-white");
+            // console.log(texts[i]);
+            
+            texts[i].classList.replace("text-[#796A59]", "text-[#394B32]");
+
+        } else {
+            circles[i].classList.replace("bg-[#394B32]", "bg-[#E9DCC7]");
+            circles[i].classList.replace("text-white", "text-[#796A59]");
+
+            texts[i].classList.replace("text-[#394B32]", "text-[#796A59]");
+        }
+    }
+    for (let i = 0; i < lines.length; i++) {
+        // console.log(lines[i]);
+        
+        if (i < step - 1) {
+            lines[i].classList.replace("bg-[#E9DCC7]", "bg-[#394B32]");
+        } else {
+            lines[i].classList.replace("bg-[#394B32]", "bg-[#E9DCC7]");
+        }
+        
+    }
+}
+// changeProgress(3);
+// changeProgress(2);
 
 
 
