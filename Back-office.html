@@ -122,7 +122,7 @@
                 <h2 class="text-xl md:text-2xl  text-[#394832] border-b border-[#E9DCC7] pb-4 mb-6">Étape 2 :
                     Caractéristiques & Options</h2>
 
-                <div>
+                <div id="DivOrigin">
                     <label for="origin" class="block text-sm  text-[#302C24] mb-2">Origine des grains :</label>
 
                     <select id="origin" name="origin"
@@ -136,16 +136,16 @@
                     </select>
                 </div>
 
-                <div class="space-y-2">
+                <div class="space-y-2" id="DivIntensity">
                     <label for="intensity" class="block text-sm  text-[#302C24] mb-2">Niveau de torréfaction / Intensité
                         :</label>
 
-                    <input type="range" id="intensity" name="intensity" min="1" max="10" value="5"
+                    <input type="range" id="intensity" name="intensity" min="1" max="10"
                         class="w-full border border-[#E5DCCF] rounded-lg px-4 py-3 bg-[#FAF7F0] text-[#302C24] outline-none focus:border-[#394832] ">
 
                 </div>
 
-                <fieldset class="border border-[#E5DCCF] rounded-xl p-5 space-y-4">
+                <fieldset class="border border-[#E5DCCF] rounded-xl p-5 space-y-4" id="température">
                     <legend class="text-sm  text-[#394832] px-2">Température :</legend>
 
                     <div class="space-y-2">
@@ -163,7 +163,7 @@
 
                 </fieldset>
 
-                <fieldset class="border border-[#E5DCCF] rounded-xl p-5 space-y-4">
+                <fieldset class="border border-[#E5DCCF] rounded-xl p-5 space-y-4" id="tailles">
                     <legend class="text-sm  text-[#394832] px-2">Tailles disponibles :</legend>
 
                     <div class="space-y-2">
@@ -186,7 +186,7 @@
 
                 </fieldset>
 
-                <fieldset class="border border-[#E5DCCF] rounded-xl p-5 space-y-4">
+                <fieldset class="border border-[#E5DCCF] rounded-xl p-5 space-y-4" id="lait">
                     <legend class="text-sm  text-[#394832] px-2">Options de lait :</legend>
 
                     <div class="space-y-2">
@@ -215,7 +215,7 @@
 
                 </fieldset>
 
-                <fieldset class="border border-[#E5DCCF] rounded-xl p-5 space-y-4">
+                <fieldset class="border border-[#E5DCCF] rounded-xl p-5 space-y-4" id="supple">
                     <legend class="text-sm  text-[#394832] px-2">Suppléments :</legend>
 
                     <div class="space-y-2">
