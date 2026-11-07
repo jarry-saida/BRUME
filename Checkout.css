@@ -95,7 +95,6 @@ main > div:first-child {
 }
 
 main h1 {
-    font-family: Georgia, serif;
     font-size: 30px;
     color: var(--dark);
     margin-bottom: 8px;

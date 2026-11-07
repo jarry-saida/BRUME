@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.26.25",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "daisyui": "^5.7.50"
+  }
+}
