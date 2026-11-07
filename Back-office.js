@@ -5,12 +5,17 @@ const InfoProduit = {
     descreption: null,
     image: null,
     grains: null,
-    intensity:null,
+    intensity: null,
     température: null,
     tailles: [],
     optionsLait: [],
-    suppléments: []
+    suppléments: [],
+
+    promotion: false,
+    pourcentage: null,
+    dateFinPromotion: null
 };
+
 const step2 = document.getElementById("step2");
 // console.log(step2);
 const step3 = document.getElementById("step3");
@@ -32,10 +37,27 @@ suivantBtn.addEventListener("click", NavigationStep1);
 precedentBtn.addEventListener("click", NavigationStep2_3);
 function affichageStep1() {
     if (regexStep1()) {
+        Swal.fire({
+            title: "Étape 1 réussie !",
+            text: "Les informations générales sont valides.",
+            icon: "success",
+            confirmButtonText: "Continuer",
+            confirmButtonColor: "#394832"
+        });
         step2.style.display = "block";
         step3.style.display = "none";
         step1.style.display = "none";
         precedentBtn.style.display = "block";
+        changeProgress(2);
+
+    } else {
+        Swal.fire({
+            title: "Erreur !",
+            text: "Veuillez vérifier les informations générales.",
+            icon: "error",
+            confirmButtonText: "Corriger",
+            confirmButtonColor: "#394832"
+        });
     }
 }
 
@@ -46,35 +68,49 @@ function affichageStep2() {
     precedentBtn.style.display = "block";
     suivantBtn.style.display = "block";
     submitBtn.style.display = "none";
+    changeProgress(2);
 }
 function affichageStep3() {
     if (regexStep2()) {
+        Swal.fire({
+            title: "Étape 2 réussie !",
+            text: "Les caractéristiques et les options sont valides.",
+            icon: "success",
+            confirmButtonText: "Continuer",
+            confirmButtonColor: "#394832"
+        });
         step2.style.display = "none";
         step1.style.display = "none";
         step3.style.display = "block";
         precedentBtn.style.display = "block";
         suivantBtn.style.display = "none";
         submitBtn.style.display = "block";
+        afficherProduit();
+        changeProgress(3);
+    } else {
+        Swal.fire({
+            title: "Erreur !",
+            text: "Veuillez vérifier les caractéristiques et les options.",
+            icon: "error",
+            confirmButtonText: "Corriger",
+            confirmButtonColor: "#394832"
+        });
     }
 
 }
 function NavigationStep1() {
     if (step2.style.display === "none") {
         affichageStep1();
-        changeProgress(2);
         // console.log(InfoProduit);
 
 
     } else {
         affichageStep3();
-        changeProgress(3);
-
     }
 }
 function NavigationStep2_3() {
     if ((step3.style.display === "block")) {
         affichageStep2();
-        changeProgress(2);
 
     } else if ((step2.style.display === "block") && (step3.style.display === "none")) {
         step2.style.display = "none";
@@ -241,6 +277,11 @@ function regexPromotion() {
 
 
         if (regexDate() & regexPourcentage()) {
+            InfoProduit.promotion = true;
+            InfoProduit.pourcentage = inputPourcentage.value;
+
+            const inputDate = document.getElementById("endDate");
+            InfoProduit.dateFinPromotion = inputDate.value;
             return true;
         } else {
             return false;
@@ -248,12 +289,14 @@ function regexPromotion() {
 
     } else {
         // console.log(" non checked");
-
+        InfoProduit.promotion = false;
+        InfoProduit.pourcentage = null;
+        InfoProduit.dateFinPromotion = null;
         return true;
     }
 }
-function regexStep1() {
 
+function regexStep1() {
     const nom = regexNom();
     const prix = regexPrix();
     const image = regexImage();
@@ -261,12 +304,6 @@ function regexStep1() {
 
     return nom && prix && image && promo;
 }
-// function regexStep1(){
-//     if ((regexNom() & regexPrix() & regexImage()) | (regexNom() & regexPrix() & regexImage() & regexPromotion())) {
-//         return true;
-//     }
-//     return false;
-// }
 const circle1 = document.getElementById("circle1");
 // console.log(circle1);
 
@@ -363,7 +400,7 @@ const DivIntensity = document.getElementById("DivIntensity");
 // console.log(DivIntensity);
 const inputIntensity = document.getElementById("intensity");
 // console.log(inputIntensity);
-function Intensity(){
+function Intensity() {
     let value = inputIntensity.value;
     // console.log(value);
     InfoProduit.intensity = value;
@@ -379,11 +416,17 @@ const inputGlase = document.getElementById("glase");
 function regexTempérature() {
     fieldsetTenperature.querySelector("span")?.remove();
 
-    
+
     if (inputChaud.checked || inputGlase.checked) {
         fieldsetTenperature.querySelector("span")?.remove();
+
+        if (inputChaud.checked) {
+            InfoProduit.température = inputChaud.value;
+        } else {
+            InfoProduit.température = inputGlase.value;
+        }
         return true;
-    }else{
+    } else {
         fieldsetTenperature.querySelector("span")?.remove();
 
         const span = document.createElement("span");
@@ -404,7 +447,18 @@ function regexTailles() {
     fieldsetTailles.querySelector("span")?.remove();
 
     if (inputSmall.checked || inputMedium.checked || inputLarge.checked) {
-    fieldsetTailles.querySelector("span")?.remove();
+        fieldsetTailles.querySelector("span")?.remove();
+        if (inputSmall.checked) {
+            InfoProduit.tailles.push(inputSmall.value);
+        }
+
+        if (inputMedium.checked) {
+            InfoProduit.tailles.push(inputMedium.value);
+        }
+
+        if (inputLarge.checked) {
+            InfoProduit.tailles.push(inputLarge.value);
+        }
         return true;
     } else {
         fieldsetTailles.querySelector("span")?.remove();
@@ -426,7 +480,22 @@ const inputAmande = fieldsetLait.querySelector("#milkAmande");
 
 function regexLaits() {
     if (inputVache.checked || inputAmande.checked || inputAvoine.checked || inputSoja.checked) {
-    fieldsetLait.querySelector("span")?.remove();
+        fieldsetLait.querySelector("span")?.remove();
+        if (inputVache.checked) {
+            InfoProduit.optionsLait.push(inputVache.value);
+        }
+
+        if (inputAvoine.checked) {
+            InfoProduit.optionsLait.push(inputAvoine.value);
+        }
+
+        if (inputSoja.checked) {
+            InfoProduit.optionsLait.push(inputSoja.value);
+        }
+
+        if (inputAmande.checked) {
+            InfoProduit.optionsLait.push(inputAmande.value);
+        }
         return true;
     } else {
         fieldsetLait.querySelector("span")?.remove();
@@ -437,7 +506,7 @@ function regexLaits() {
         fieldsetLait.appendChild(span);
         return false;
     }
-    
+
 }
 const fieldsetSupplements = document.getElementById("supplements");
 // console.log(fieldsetSupplements);
@@ -447,7 +516,18 @@ const inputNoisette = fieldsetSupplements.querySelector("#noisette");
 // console.log(inputCaramel,inputVannila,inputNoisette);
 function regexSupplements() {
     if (inputCaramel.checked || inputNoisette.checked || inputVannila.checked) {
-    fieldsetSupplements.querySelector("span")?.remove();
+        fieldsetSupplements.querySelector("span")?.remove();
+        if (inputVannila.checked) {
+            InfoProduit.suppléments.push(inputVannila.value);
+        }
+
+        if (inputCaramel.checked) {
+            InfoProduit.suppléments.push(inputCaramel.value);
+        }
+
+        if (inputNoisette.checked) {
+            InfoProduit.suppléments.push(inputNoisette.value);
+        }
         return true;
     } else {
         fieldsetSupplements.querySelector("span")?.remove();
@@ -458,12 +538,68 @@ function regexSupplements() {
         fieldsetSupplements.appendChild(span);
         return false;
     }
-    
 }
 
+function afficherProduit() {
 
+    const textareaDescription = document.getElementById("description");
+    // console.log(textareaDescription);
 
+    InfoProduit.descreption = textareaDescription.value;
 
+    const ArticleProduit = document.getElementById("produit");
+    // console.log(ArticleProduit);
+
+    ArticleProduit.innerHTML = `
+
+        <h3 class="text-xl mb-4">Informations générales</h3>
+
+        <p><strong>Nom :</strong> ${InfoProduit.nom}</p>
+
+        <p><strong>Prix :</strong> ${InfoProduit.prix} DH</p>
+
+        <p><strong>Description :</strong> ${InfoProduit.descreption}</p>
+
+        <p><strong>Image :</strong>${InfoProduit.image}</p>
+
+        <hr class="my-4">
+
+        <h3 class="text-xl mb-4">Promotion</h3>
+
+        ${InfoProduit.promotion ? `
+            <p><strong>Promotion :</strong> Oui</p>
+
+            <p><strong>Pourcentage :</strong>
+                ${InfoProduit.pourcentage} %
+            </p>
+
+            <p><strong>Date de fin :</strong>
+                ${InfoProduit.dateFinPromotion}
+            </p>
+
+        ` : `
+            <p><strong>Promotion :</strong> Non</p>
+        `}
+
+        <hr class="my-4">
+
+        <h3 class="text-xl mb-4">Caractéristiques & Options</h3>
+
+        <p><strong>Origine :</strong> ${InfoProduit.grains}</p>
+
+        <p><strong>Intensité :</strong> ${InfoProduit.intensity}</p>
+
+        <p><strong>Température :</strong> ${InfoProduit.température}</p>
+
+        <p><strong>Tailles :</strong> ${InfoProduit.tailles.join(", ")}</p>
+
+        <p><strong>Options de lait :</strong> ${InfoProduit.optionsLait.join(", ")}</p>
+
+        <p><strong>Suppléments :</strong> ${InfoProduit.suppléments.join(", ")}</p>
+    `;
+}
+
+// console.log(InfoProduit);
 
 function regexStep2() {
     const origin = regexOrigin();
@@ -472,8 +608,47 @@ function regexStep2() {
     const tailles = regexTailles();
     const laits = regexLaits();
     const supplements = regexSupplements();
-    return origin && intensity && température && tailles && laits && supplements ;
+    return origin && intensity && température && tailles && laits && supplements;
 }
+submitBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    Swal.fire({
+        title: "Produit ajouté !",
+        text: "Votre produit a été ajouté avec succès.",
+        icon: "success",
+        confirmButtonText: "OK",
+        confirmButtonColor: "#394832"
+    });
+
+    document.querySelector("form").reset();
+
+    InfoProduit.nom = null;
+    InfoProduit.prix = null;
+    InfoProduit.descreption = null;
+    InfoProduit.image = null;
+    InfoProduit.grains = null;
+    InfoProduit.intensity = null;
+    InfoProduit.température = null;
+    InfoProduit.tailles = [];
+    InfoProduit.optionsLait = [];
+    InfoProduit.suppléments = [];
+    InfoProduit.promotion = false;
+    InfoProduit.pourcentage = null;
+    InfoProduit.dateFinPromotion = null;
+
+    document.getElementById("produit").innerHTML = "";
+
+    step1.style.display = "block";
+    step2.style.display = "none";
+    step3.style.display = "none";
+
+    precedentBtn.style.display = "none";
+    suivantBtn.style.display = "block";
+    submitBtn.style.display = "none";
+
+    changeProgress(1);
+});
 
 
 
